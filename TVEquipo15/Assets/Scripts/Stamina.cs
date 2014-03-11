@@ -30,7 +30,7 @@ public class Stamina : MonoBehaviour {
 	{
 		while (disminuir)
 		{
-			print (gameObject.transform.localScale.x);
+
 			if (gameObject.transform.localScale.x>0)
 			{
 				gameObject.transform.localScale = gameObject.transform.localScale - (new Vector3(cantidadDisminucion*Time.deltaTime,0,0));
