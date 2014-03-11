@@ -47,6 +47,7 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\Arma.cs" />
+     <Compile Include="Assets\Scripts\ClasePrincipal.cs" />
      <Compile Include="Assets\Scripts\Gusano.cs" />
      <Compile Include="Assets\Scripts\Invocador.cs" />
      <Compile Include="Assets\Scripts\InvocarPajaro.cs" />
@@ -54,6 +55,7 @@
      <Compile Include="Assets\Scripts\Pajaro.cs" />
      <Compile Include="Assets\Scripts\Plataforma.cs" />
      <Compile Include="Assets\Scripts\Stamina.cs" />
+     <Compile Include="Assets\Scripts\Velocidad.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

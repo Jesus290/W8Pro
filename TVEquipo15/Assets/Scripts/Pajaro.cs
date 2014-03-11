@@ -14,8 +14,6 @@ public class Pajaro : MonoBehaviour {
 
 	void Start () {
 		initTime = Time.time;
-
-	
 	}
 	
 	// Update is called once per frame

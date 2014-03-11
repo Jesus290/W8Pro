@@ -1,47 +1,37 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Plataforma : MonoBehaviour {
+public class Plataforma  : ClasePrincipal {
+	
 
-
-	public float velocidadInicial;
-	public float velocidadIncremento;
 	public float timeAlive;
-
+	ClasePrincipal vel = new ClasePrincipal();
+	
+	
 	float initTime;
 
 
-
-	void Start () {
-
-		initTime = Time.time;
-		StartCoroutine ("Velocidad");
-
 	
+	
+	
+	void Start () {
+		
+		initTime = Time.time;
+		
+		
 	}
 	
-
+	
 	void Update () 
 	{
 
-		transform.Translate (new Vector3(5*Time.deltaTime*velocidadInicial, 0, 0));
-
-
+		transform.Translate(5*Time.deltaTime*vel.getVelocidad(),0,0);
 		if(Time.time >= (initTime+timeAlive))
-		{
 			Destroy(this.gameObject);
 		}
-	
-	}
-
-	public IEnumerator Velocidad() 
-	{ 
-		velocidadInicial = velocidadInicial + velocidadIncremento;
-
 		
-		yield return new WaitForSeconds(3);
 	}
+	
 
+	
 
-
-}
