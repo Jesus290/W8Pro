@@ -46,10 +46,15 @@
 	</Reference>
   </ItemGroup>
   <ItemGroup>
+     <Compile Include="Assets\Pruebas\Platform\PlatformManager.cs" />
+     <Compile Include="Assets\Pruebas\Runner\Guante.cs" />
+     <Compile Include="Assets\Pruebas\Runner\Runner.cs" />
+     <Compile Include="Assets\Pruebas\Skyline\SkylineManager.cs" />
      <Compile Include="Assets\Scripts\Arma.cs" />
      <Compile Include="Assets\Scripts\Gusano.cs" />
      <Compile Include="Assets\Scripts\Invocador.cs" />
      <Compile Include="Assets\Scripts\InvocarPajaro.cs" />
+     <Compile Include="Assets\Scripts\MovPersonaje.cs" />
      <Compile Include="Assets\Scripts\MovimientoPersonaje.cs" />
      <Compile Include="Assets\Scripts\Pajaro.cs" />
      <Compile Include="Assets\Scripts\Plataforma.cs" />
