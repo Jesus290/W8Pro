@@ -6,8 +6,11 @@ public class Invocador : MonoBehaviour {
 	public float [] medidasAncho;
 	public float distanciaPlat;
 	public float [] medidasAltura; //aqui debe haber 4 porque las plataforma 3 tiene dos pisos
-	public GameObject gusanoActual;
+
 	public GameObject [] obstaculos;
+	public float [] anchoPasto;
+
+
 	
 	
 	
@@ -20,15 +23,7 @@ public class Invocador : MonoBehaviour {
 	
 	
 	GameObject plataformaActual;
-	
-	
-	//Gusanos variables
-	int gusanoTF;
-	int cantidadGusanos; //lo que diga el Random a partir de los max&min gusanos
-	public int maxGusanos; //Gusanos maximos por plataforma
-	public int minimoGusanos; //Gusanos mínimos por plataforma
-	public int distanciaEntreGusanos; //La distancia que va a existir entre un gusano y otro
-	public int distanciaExtraPlataforma3; // Es un nombre gigante pero enserio es la distancia extra de la forma 3
+
 	
 	
 	void Start () {
@@ -54,92 +49,7 @@ public class Invocador : MonoBehaviour {
 				if (Vector3.Distance(plataformaActual.transform.position, transform.position)>=((medidaAnterior/2) + (medidasAncho[aleatorio]/2))) //Le puedo poner this
 				{
 					plataformaActual = Instantiate (plataformas[aleatorio],transform.position, transform.rotation) as GameObject; 
-					
-					gusanoTF = Random.Range (0, 10);
-					print ("gusanos: " +gusanoTF);
-					
-					if (gusanoTF<=5) //VOY A PONER GUSANOS!!!!!!!!!!!!!!!!!!!! AQUÍ VAN LOS GUSANOS!!! DESPUÉS VAN LOS OBSTÁCULOS!!
-					{
 
-
-						cantidadGusanos = Random.Range (minimoGusanos,maxGusanos);
-
-						if (aleatorio == 0 || aleatorio ==1 || aleatorio ==3)
-						{
-							int posicion=0;
-							int primero = 1;
-							
-							for (int i = 0; i<cantidadGusanos; i++)
-							{
-								if (primero ==1)
-								{
-									
-									gusanoActual = Instantiate (gusanoActual,new Vector3(plataformaActual.transform.position.x, medidasAltura[aleatorio] ,0), transform.rotation) as GameObject;
-									
-									
-								}
-								if (posicion%2 == 0) //derecha
-								{
-									gusanoActual = Instantiate (gusanoActual,new Vector3(plataformaActual.transform.position.x+distanciaEntreGusanos, medidasAltura[aleatorio] ,0), transform.rotation) as GameObject;
-									
-									
-									posicion++;
-									
-								}
-								
-								if (posicion%2 != 0) //izquierda
-								{
-									
-									gusanoActual = Instantiate (gusanoActual,new Vector3(plataformaActual.transform.position.x-distanciaEntreGusanos, medidasAltura[aleatorio] ,0), transform.rotation) as GameObject;
-									
-									
-									distanciaEntreGusanos = distanciaEntreGusanos + distanciaEntreGusanos;
-									posicion++;
-									
-								}
-								
-							}
-
-						}
-
-						if (aleatorio==2)
-						{
-							int posicion3=0;
-							int primero3 = 1;
-							
-							for (int i = 0; i<cantidadGusanos; i++)
-							{
-								if (primero3 ==1)
-								{
-									gusanoActual = Instantiate (gusanoActual,new Vector3(plataformaActual.transform.position.x+distanciaExtraPlataforma3, medidasAltura[aleatorio] ,0), transform.rotation) as GameObject;
-								}
-								if (posicion3%2 == 0) //derecha
-								{
-									gusanoActual = Instantiate (gusanoActual,new Vector3(plataformaActual.transform.position.x+distanciaEntreGusanos+distanciaExtraPlataforma3, medidasAltura[aleatorio] ,0), transform.rotation) as GameObject;
-									posicion3++;
-									
-								}
-								
-								if (posicion3%2 != 0) //izquierda
-								{
-									
-									gusanoActual = Instantiate (gusanoActual,new Vector3(plataformaActual.transform.position.x-distanciaEntreGusanos+distanciaExtraPlataforma3, medidasAltura[aleatorio] ,0), transform.rotation) as GameObject;
-									distanciaEntreGusanos = distanciaEntreGusanos + distanciaEntreGusanos;
-									posicion3++;
-									
-								}
-								
-							}
-						}
-
-						
-
-
-						}
-						
-						
-
-					
 					medidaAnterior = medidasAncho[aleatorio];
 					aleatorio = Random.Range(0, plataformas.Length);
 					
@@ -150,12 +60,6 @@ public class Invocador : MonoBehaviour {
 		yield return null; 
 		
 	}
+
+	
 }
-
-
-
-
-
-
-
-

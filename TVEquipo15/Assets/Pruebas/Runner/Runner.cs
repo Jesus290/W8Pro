@@ -3,8 +3,9 @@ using System.Collections;
 
 public class Runner : MonoBehaviour {
 
-
+	[HideInInspector]
 	public float distanceTraveledY;
+	[HideInInspector]
 	public static float distanceTraveled;
 
 	
@@ -12,32 +13,30 @@ public class Runner : MonoBehaviour {
 	float localSpped;
 
 	float distToGround;
+	[HideInInspector]
 	public float jumpPower;
 
+	[HideInInspector]
 	public float timer;
+	[HideInInspector]
 	public float time2 = 0.0F;
 
 	GameObject personaje;
+	[HideInInspector]
+	public bool sumaVelocidad = true;
+
 
 	void Start () {
 		localSpped = velocidad;
 		personaje = GameObject.Find ("Personaje");
+		StartCoroutine("aumenta");
 	}
 
 	void Update () {
-
-		if (Input.GetKeyUp (KeyCode.Space)) {
-			personaje.rigidbody.AddForce(new Vector3(0,10,0), ForceMode.VelocityChange);
-		}
-
 		distanceTraveled = transform.localPosition.x;
-		//distToGround = gameObject.collider.bounds.extents.y;
-		//brincar ();
 
 		volar ();
-
-		//transform.Translate(5f * Time.deltaTime, 0f,0f);
-
+		saltar ();
 	}
 
 
@@ -56,18 +55,7 @@ public class Runner : MonoBehaviour {
 
 	bool megatimer(){
 
-		// Move the object 10 meters per second!
 		float translation = Time.deltaTime * 2;
-
-		/*
-		if (Time.time == time2) {
-			time2=Time.time;
-			var guiTime = Time.time - time2;
-			while(timer>0){
-				timer -= Time.deltaTime;
-			}
-		}
-		*/
 
 		if(translation <= 3){
 			return true;
@@ -83,15 +71,27 @@ public class Runner : MonoBehaviour {
 		}
 	}
 
-	/*
-	void brincar(){
-		if (Input.GetKeyDown (KeyCode.Space)){
-			transform.position = new Vector3(0,jumpPower*10,0);
-		}
+	public void saltar(){
+		if (Input.GetKeyUp (KeyCode.Space)) {
+			if(isGrounded()){
+				personaje.rigidbody.AddForce(new Vector3(0,10,0), ForceMode.VelocityChange);		
+			}
+		}	
 	}
-	*/
 
 	bool isGrounded(){
 		return Physics.Raycast(transform.position, - Vector3.up, distToGround + 0.1f);
+	}
+
+	public IEnumerator aumenta ()
+	{
+		while (sumaVelocidad){
+			ClaseMaestra.velocidad= ClaseMaestra.velocidad +1;
+			yield return new WaitForSeconds (3);
+			
+			
+		}
+		
+		yield return new WaitForSeconds (3);
 	}
 }

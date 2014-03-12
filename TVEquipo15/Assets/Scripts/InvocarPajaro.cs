@@ -4,6 +4,7 @@ using System.Collections;
 public class InvocarPajaro : MonoBehaviour {
 	
 	//poner privador para el implementador es importante
+	[HideInInspector]
 	public bool puedoInstanciar= true;  //Ponerle true o false si el personaje agarra el Power-up
 
 	public float alturaMinima; //altura mínima a la que puede volar el pájaro

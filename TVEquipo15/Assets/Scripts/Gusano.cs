@@ -16,8 +16,6 @@ public class Gusano : ClasePrincipal {
 	float initTime;
 	float velocidad;
 
-
-
 	void Start () {
 		
 		initTime = Time.time;
